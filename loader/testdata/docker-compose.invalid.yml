@@ -1,0 +1,17 @@
+version: "3.8"
+
+containers:
+  application:
+    build: .
+    ports: ${PORT:-8080}:${PORT:-8080}
+    environment:
+      PORT: ${PORT:-8080}
+      CONTEXT_PATH: ${CONTEXT_PATH:-/}
+
+  database:
+    image: test/image
+    container_name: database
+    ports: 9090:9090
+    environment:
+      - PORT=9090
+      - OUTPUT=verbose
