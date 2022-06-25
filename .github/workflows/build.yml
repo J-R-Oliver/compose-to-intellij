@@ -77,16 +77,16 @@ jobs:
         with:
           threshold: 95
       - name: Output Dependencies
-        run: go list -json -m all > go.list
+        run: go list -json -deps ./... > go.list
       - name: Audit Dependencies
         uses: sonatype-nexus-community/nancy-github-action@main
       - name: Outdated Dependencies
         run: |
           echo Checking for outdated dependencies...
-          OUTDATED_COUNT=$(go list -u -m -f '{{if .Update}}{{.}}{{end}}' all | wc -l)
+          OUTDATED_COUNT=$(go list -u -m -f '{{if and .Update (not .Indirect)}}{{.}}{{end}}' all | wc -l)
           if [[ OUTDATED_COUNT -gt 0 ]] ; then
             echo "OUTDATED_COUNT" outdated dependencies found...
-            go list -u -m -f '{{if .Update}}{{.}}{{end}}' all 
+            go list -u -m -f '{{if and .Update (not .Indirect)}}{{.}}{{end}}' all
             exit 1
           fi
           echo No outdated dependencies found...
