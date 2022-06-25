@@ -28,5 +28,7 @@ jobs:
         id: tag
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v3
+        with:
+          args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
