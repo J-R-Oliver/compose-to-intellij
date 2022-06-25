@@ -1,0 +1,36 @@
+builds:
+  - id: compose-to-intellij
+    main: ./cmd/compose-to-intellij/main.go
+    goos:
+      - darwin
+      - linux
+
+archives:
+  - replacements:
+      darwin: macOS
+      linux: Linux
+      386: i386
+      amd64: x86_64
+
+brews:
+  - name: compose-to-intellij
+    homepage: https://github.com/J-R-Oliver/homebrew-tools
+    tap:
+      owner: J-R-Oliver
+      name: homebrew-tools
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^build:'
+      - '^ci:'
+      - '^docs:'
+      - '^refactor:'
+      - '^style:'
