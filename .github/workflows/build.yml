@@ -77,7 +77,7 @@ jobs:
         with:
           threshold: 95
       - name: Output Dependencies
-        run: go list -json -m all > go.list
+        run: go list -json -deps ./... > go.list
       - name: Audit Dependencies
         uses: sonatype-nexus-community/nancy-github-action@main
       - name: Outdated Dependencies
