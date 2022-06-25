@@ -2,7 +2,6 @@ package converter
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 
 	"github.com/compose-spec/compose-go/types"
@@ -95,8 +94,16 @@ func TestIntellijEnvVars(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := IntellijEnvVars(tt.p); !reflect.DeepEqual(got, tt.want) {
+			got := IntellijEnvVars(tt.p)
+
+			if len(got) != len(tt.want) {
 				t.Errorf("IntellijEnvVars() = %v, want %v", got, tt.want)
+			}
+
+			for k, v := range tt.want {
+				if got[k] != v {
+					t.Errorf("IntellijEnvVars() = %v, want %v", got, tt.want)
+				}
 			}
 		})
 	}
