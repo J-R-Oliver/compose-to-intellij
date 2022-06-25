@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/J-R-Oliver/go-commando v1.0.0
-	github.com/compose-spec/compose-go v1.2.7
+	github.com/compose-spec/compose-go v1.2.8
 )
 
 require (
