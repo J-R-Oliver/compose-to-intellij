@@ -1,0 +1,4 @@
+# Vulnerabilities deemed acceptable due to program use case
+CWE-129 until=2023-01-01
+CWE-400 until=2023-01-01
+CWE-835 until=2023-01-01
