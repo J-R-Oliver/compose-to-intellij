@@ -12,7 +12,7 @@ func main() {
 		Name("converter").
 		Description("Command line application to convert Docker Compose environment variables to IntelliJ format.").
 		Version("1.0.0").
-		Option("i", "input", "input", "", "./docker-compose.yml").
+		Option("i", "input", "input", "filepath for docker-compose YAML file", "./docker-compose.yml").
 		Action(internal.Action).
 		Parse()
 }
