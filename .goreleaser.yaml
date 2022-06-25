@@ -15,7 +15,7 @@ archives:
 brews:
   - name: compose-to-intellij
     homepage: https://github.com/J-R-Oliver/homebrew-tools
-    description: Command line application to convert Docker Compose environment variables to IntelliJ format.
+    description: Command-line application to convert Docker Compose env vars to IntelliJ format
     tap:
       owner: J-R-Oliver
       name: homebrew-tools
