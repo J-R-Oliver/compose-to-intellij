@@ -16,12 +16,81 @@ Command line application to convert Docker Compose environment variables to Inte
 </tr>
 </table>
 
+## Intro
+
+`compose-to-intellij` converts environment variables configured in [compose files](https://compose-spec.io) to the string 
+format used by iDEA products such as `IntelliJ` or `WebStorm`. Compose environment variables are set using the 
+`environment` key as part of `service` declarations. `compose-to-intellij` will output an `IntelliJ` environment 
+variable string for each `service` configured in the`compose` file.  Optional arguments of compose service names can be 
+passed to filter the output.
+
 ## Contents
 
+- [Installation](#installation)
+- [Arguments](#arguments)
+- [Options](#options)
 - [Local Development](#local-development)
 - [Testing](#testing)
 - [Conventional Commits](#conventional-commits)
 - [GitHub Actions](#github-actions)
+
+## Installation
+
+`compose-to-intellij` can be installed either with [Homebrew](https://brew.sh), built from source, or downloaded from 
+GitHub as a [GitHub release asset](https://github.com/J-R-Oliver/compose-to-intellij/releases).
+
+### Homebrew
+
+`compose-to-intellij` can be installed with `Homebrew` either by tapping [j-r-oliver/tools](https://github.com/J-R-Oliver/homebrew-tools) 
+and then installing the `formulae`...
+
+```shell
+brew tap j-r-oliver/tools
+brew install compose-to-intellij
+```
+
+...or installing directly from the tap.
+
+```shell
+brew install j-r-oliver/tools/compose-to-intellij
+```
+
+## From Source
+
+To start `clone` the repository to your local machine. The following command will build a native executable and output
+it to `/dist`:
+
+```shell
+go build -o dist/compose-to-intellij cmd/compose-to-intellij/main.go
+```
+
+## Arguments
+
+Optional arguments can be passed after any options to filter the output. These arguments should match the `service` 
+keys defined in the `compose` file. For Example:
+
+```shell
+compose-to-intellij application database
+```
+
+## Options
+
+`compose-to-intellij` has a handful of options. These options can be used to override the defaults that have been 
+provided. For example:
+
+```shell
+compose-to-intellij -i ./build/docker-compose.build.yaml
+```
+
+### Command Line Options
+
+The following command line options are available for configuration:
+
+| Option               | Default                         | Description                           |
+|----------------------|---------------------------------|---------------------------------------|
+| -i, --input \<input> | ./openapi-validator-report.json | filepath for docker-compose YAML file |
+| -v, --version        |                                 | output the version number             |
+| -h, --help           |                                 | display help for command              |
 
 ## Local Development
 
