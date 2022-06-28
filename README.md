@@ -55,7 +55,7 @@ brew install compose-to-intellij
 brew install j-r-oliver/tools/compose-to-intellij
 ```
 
-## From Source
+### From Source
 
 To start `clone` the repository to your local machine. The following command will build a native executable and output
 it to `/dist`:
